@@ -33,8 +33,31 @@ with open(election_data_path) as election_csv:
 
 total_votes = len(votes)
 candidate = []
+candidate_votes = []
 for vote in votes:
     if vote not in candidate:
         candidate.append(str(vote))
+        candidate_votes.append(0)
+    for candi in candidate:
+        if vote == candi:
+            candidate_votes[candidate.index(candi)] +=1
+            # print(candi)
 
-print(total_votes)
+print(f'Election Results')
+print(f'----------------------------------------')
+print(f'Total Votes: {total_votes}')
+print(f'----------------------------------------')
+most_votes = 0
+for great_v in candidate_votes:
+    if great_v > most_votes:
+        most_votes = great_v
+# Created a for loop to print out the candidate and they percentatage of the total vote so that this code is more reuseable
+# As the number of candidate might vary from election to election
+for candi in range(len(candidate)):
+    print(f'{candidate[candi]}: {round((candidate_votes[candi]/total_votes)*100, 3)}% ({candidate_votes[candi]})')
+
+print(f'----------------------------------------')
+
+# print(candidate_votes.index(most_votes))
+print(f'Winner: {candidate[(candidate_votes.index(most_votes))]}')
+print(f'----------------------------------------')

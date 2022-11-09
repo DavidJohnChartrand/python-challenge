@@ -7,7 +7,7 @@ import csv
 
 
 # Create a path for the file
-budget_data_path = os.path.join('..', 'PyBank', 'Resources', 'budget_data.csv')
+budget_data_path = os.path.join('..', "python-challenge", 'PyBank', 'Resources', 'budget_data.csv')
 
 # define a formula to count the number of rows
 # this will be the same as counting the number of months
@@ -57,13 +57,16 @@ ChangesInProfit = []
 
 
 # print(month_count)
-
-print(len(Profit_list))
-print(TotalProfit)
-print(Mean_profit_change)
-print(max(Profit_diff))
-print(min(Profit_diff))
+print(f'Financial Analysis')
+print('----------------------------------------')
+print(f'Total Months: {len(Profit_list)}')
+print(f'Total: ${int(TotalProfit)}')
+print(f'Average Change: ${round(Mean_profit_change,2)}')
+# print(f'Greatest Increase in Profits: {max(Profit_diff)}')
+# print(min(Profit_diff))
 max_mon = (Profit_diff.index(max(Profit_diff)))+1
 min_mon = (Profit_diff.index(min(Profit_diff)))+1
-print(Date_list[max_mon])
-print(Date_list[min_mon])
+# print(Date_list[max_mon])
+# print(Date_list[min_mon])
+print(f'Greatest Increase in Profits: {Date_list[max_mon]} (${int(max(Profit_diff))})')
+print(f'Greatest Decrease in Profits: {Date_list[min_mon]} (${int(min(Profit_diff))})')
