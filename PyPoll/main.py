@@ -4,6 +4,7 @@ import csv
 
 # Create a path for the file
 election_data_path = os.path.join('..', 'python-challenge', 'PyPoll', 'Resources', 'election_data.csv')
+analysis_path = os.path.join('..', 'python-challenge', 'PyPoll', 'analysis', 'analysis.txt')
 
 
 def sum(arry):
@@ -61,3 +62,15 @@ print(f'----------------------------------------')
 # print(candidate_votes.index(most_votes))
 print(f'Winner: {candidate[(candidate_votes.index(most_votes))]}')
 print(f'----------------------------------------')
+
+with open(analysis_path,'w') as analysis:
+    print(f'Election Results', file=analysis)
+    print(f'----------------------------------------', file=analysis)
+    print(f'Total Votes: {total_votes}', file=analysis)
+    print(f'----------------------------------------', file=analysis)
+    for candi in range(len(candidate)):
+        print(f'{candidate[candi]}: {round((candidate_votes[candi]/total_votes)*100, 3)}% ({candidate_votes[candi]})', file=analysis)\
+    
+    print(f'----------------------------------------', file=analysis)
+    print(f'Winner: {candidate[(candidate_votes.index(most_votes))]}', file=analysis)
+    print(f'----------------------------------------', file=analysis)
